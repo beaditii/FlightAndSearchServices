@@ -8,7 +8,7 @@ class CityRepository{
             return city;
         }
         catch(error){
-            console.log("Something went wrong in the repository layer");
+            console.log("Something went wrong in the repository1 layer");
             throw {error};
         }
     }
@@ -23,23 +23,29 @@ class CityRepository{
             return true;
         }
         catch(error){
-            console.log("Something went wrong in the repository layer");
+            console.log("Something went wrong in the repository2 layer");
             throw {error};
         }
     }
 
     async updateCity(cityId,data){
         try{
-    const city=await City.update(data,{
+            //the below approach also works but will not return updated object
+            //if you are using pg then returning:true works
+   /* const city=await City.update(data,{
         where:{
             id:cityId
         }
-    });
+    });*/
+    //for getting updated data in mysql we use below approach
+    const city=await City.findByPk(cityId);
+    city.name=data.name;
+    await city.save();
     return city;
         }
 
         catch(error){
-            console.log("Something went wrong in the repository layer");
+            console.log("Something went wrong in the repository3 layer");
             throw{error};
         }
     }
@@ -50,7 +56,7 @@ const city=await City.findByPk(cityId);
   return city;
 }
 catch(error){
-    console.log("Something went wrong in the repository layer");
+    console.log("Something went wrong in the repository4 layer");
     throw{error};
 }
     }

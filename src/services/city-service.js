@@ -19,7 +19,7 @@ class CityService{
 
     async deleteCity(cityId){
            try{
-              const reponse=await this.cityRepository.deleteCity(cityId);
+              const response=await this.cityRepository.deleteCity(cityId);
             return response;
               }
             catch (error){
