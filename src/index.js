@@ -5,7 +5,7 @@ const ApiRoutes=require('./routes/index');
 
 const bodyParser = require('body-parser');
 //const CityRepository=require('./repository/city_repository');
-
+// const {Airplane} = require('./models/index');
 const db=require('./models/index');
 const setupAndStartServer=async()=>{
     //create the express object
@@ -49,7 +49,10 @@ const setupAndStartServer=async()=>{
     });
     await city.addAirport(newAirport);*/
    // console.log(city,airports);
-     
+    //  await Airplane.create({
+    //   modelNumber:'Bombardier CRJ',
+
+    //  })
     });}
 
     setupAndStartServer();
