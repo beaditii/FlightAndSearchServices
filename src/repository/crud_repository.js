@@ -14,7 +14,7 @@ class CrudRepository{
     }
     async destroy(modelId){
         try{
-           const result=await this.model.destroy({
+           await this.model.destroy({
                             where:{
                                      id:modelId
                                    }

@@ -64,6 +64,27 @@ async getAllFlights(filter){
   throw(error);
     }
 }
+
+async updateFlights(flightId,data){
+  try{
+     await Flights.update(data,{
+      where:{
+        id:flightId
+      }
+     });
+     return true;
+  }
+  catch(error){
+    throw new AppError(
+      'RepositoryError',
+      'Cannot create Booking',
+      'There was some issue creating the booking,please try again',
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
+  }
+}
+
+
 }
 
 module.exports=FlightRepository;
